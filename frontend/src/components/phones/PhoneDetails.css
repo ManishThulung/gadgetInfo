@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&family=Lora&family=Open+Sans&display=swap");
+.phone {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.name {
+  font-family: "Lora", serif;
+}
+.centerr {
+  text-align: center;
+}
+.center {
+  padding: 7px 18px;
+  border-bottom: 1px solid rgb(207, 102, 102);
+  font-family: Roboto;
+}
+
+.tableText {
+  font-family: "Baloo Chettan 2", cursive;
+}
+
+.table {
+  border: none;
+  margin-top: 45px;
+}
+.table table tr th {
+  font-size: larger;
+}
+.table table tr th,
+.table table tr td {
+  border-bottom: 0.8px solid rgb(54, 53, 53);
+  border-top: none;
+}
+.table table tr {
+  padding: 15px 0;
+}

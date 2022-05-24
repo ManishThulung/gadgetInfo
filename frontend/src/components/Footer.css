@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&family=Bree+Serif&display=swap");
+/* footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  height: 8vh;
+  color: white;
+  text-decoration: none;
+  border: none;
+} */
+
+footer {
+  font-family: "Baloo Bhai 2", cursive;
+  /* margin-top: 10vmax; */
+  padding: 2vmax;
+  background-color: rgb(34, 33, 33);
+  /* color: white; */
+  color: rgb(235, 224, 224);
+  display: flex;
+  align-items: center;
+}
+
+.leftFooter {
+  width: 20%;
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+}
+.leftFooter > h3 {
+  font-family: "Roboto";
+  font-size: 1.4vmax;
+  text-decoration: underline;
+}
+/* .leftFooter > p {
+  text-align: center;
+  font-size: 1.2vmax;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.leftFooter > img {
+  width: 10vmax;
+  margin: 1vmax;
+  cursor: pointer;
+} */
+.contacts {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.contacts > div {
+  padding: 0.8vmax 0;
+}
+
+.contacts > div > i {
+  padding: 0 0.7vmax;
+}
+
+.midFooter {
+  width: 60%;
+
+  text-align: center;
+}
+
+.midFooter > h1 {
+  font-size: 4vmax;
+  font-family: "Roboto";
+  color: #eb4034;
+}
+.midFooter > p {
+  max-width: 60%;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin: 1vmax auto;
+}
+
+.rightFooter {
+  width: 20%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.rightFooter > h4 {
+  font-family: "Roboto";
+  font-size: 1.4vmax;
+  text-decoration: underline;
+}
+.follow-icon {
+  text-decoration: none;
+  font-size: 1.8vmax;
+  /* color: white; */
+  color: rgb(235, 224, 224);
+
+  transition: all 0.5s;
+  margin: 0.5vmax;
+  cursor: pointer;
+}
+
+.follow-icon:hover {
+  color: white;
+}

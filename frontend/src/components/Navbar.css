@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&family=Bree+Serif&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500&display=swap");
+.navbar {
+  /* background-color: aqua!important; */
+  background: white;
+  box-shadow: rgb(38, 38, 66, 0.3) 0px 20px 20px -20px;
+}
+.nav-item {
+  font-family: "Baloo Bhaijaan 2", cursive;
+}
+.nav-item a {
+  font-size: large;
+}
+/* .navbar > div > a {
+  font-family: Cocogoose;
+} */
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.55);
+  padding: 20px;
+}
+.navbar-brand {
+  font-family: "Bree Serif", serif;
+}
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
