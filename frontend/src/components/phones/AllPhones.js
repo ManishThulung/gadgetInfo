@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { getPhones } from "../../redux/actions/phoneAction";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import "./AllPhones.css";
 import "../pages/Home.css";
 
@@ -10,11 +10,11 @@ import SubHome from "../pages/SubHome";
 import SeeMore from "../pages/SeeMore";
 
 function AllPhones() {
-  const { keyword } = useParams();
+  // const { keyword } = useParams();
 
   const dispatch = useDispatch();
 
-  const [price, setPrice] = useState([10000, 150000]);
+  // const [price, setPrice] = useState([10000, 150000]);
 
   const { phones, isLoading } = useSelector((state) => state.phones);
 
@@ -33,18 +33,19 @@ function AllPhones() {
     phones.map((phone) => phone.company === "apple" && apple.push(phone));
   phones &&
     phones.map((phone) => phone.company === "xiaomi" && xiaomi.push(phone));
-  phones.map((phone) => phone.company === "samsung" && samsung.push(phone));
-  phones.map((phone) => phone.company === "vivo" && vivo.push(phone));
-  phones.map((phone) => phone.company === "oppo" && oppo.push(phone));
-  phones.map((phone) => phone.company === "asus" && asus.push(phone));
+  phones &&
+    phones.map((phone) => phone.company === "samsung" && samsung.push(phone));
+  phones && phones.map((phone) => phone.company === "vivo" && vivo.push(phone));
+  phones && phones.map((phone) => phone.company === "oppo" && oppo.push(phone));
+  phones && phones.map((phone) => phone.company === "asus" && asus.push(phone));
 
   // const priceHandler = (event, newPrice) => {
   //   setPrice(newPrice);
   // };
 
   useEffect(() => {
-    dispatch(getPhones(keyword, price));
-  }, [dispatch, keyword, price]);
+    dispatch(getPhones());
+  }, [dispatch]);
   return (
     <>
       <div className="accordion my-5 mx-5" id="accordionPanelsStayOpenExample">
