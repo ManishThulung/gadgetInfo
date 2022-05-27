@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import MailOutlieIcon from "@material-ui/icons/MailOutline";
+import { MailOutline } from "@material-ui/icons";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 
 import "./LogingRegister.css";
@@ -121,7 +121,7 @@ function LoginRegister() {
               </div>
               <form ref={loginTab} className="loginForm" onSubmit={loginSubmit}>
                 <div className="loginEmail">
-                  <MailOutlieIcon />
+                  <MailOutline />
                   <input
                     type="email"
                     placeholder="Email"
@@ -161,7 +161,7 @@ function LoginRegister() {
                   />
                 </div>
                 <div className="signupEmail">
-                  <MailOutlieIcon />
+                  <MailOutline />
                   <input
                     type="email"
                     placeholder="Email"
