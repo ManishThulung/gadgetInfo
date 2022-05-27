@@ -6,7 +6,7 @@ import "./LogingRegister.css";
 import { Face } from "@material-ui/icons";
 
 import { useDispatch, useSelector } from "react-redux";
-import { login, clearErrors, register } from "../../redux/actions/userAction";
+import { clearErrors, login, register } from "../../redux/actions/userAction";
 import { useAlert } from "react-alert";
 import Loader from "../loader/Loader";
 import { useNavigate } from "react-router-dom";
@@ -26,9 +26,6 @@ function LoginRegister() {
   const registerTab = useRef(null);
   const switcherTab = useRef(null);
 
-  // const [authUser, setAuthUser] = useState(
-  //   JSON.parse(localStorage.getItem("profile"))
-  // );
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [user, setUser] = useState({
@@ -43,11 +40,6 @@ function LoginRegister() {
     e.preventDefault();
 
     dispatch(login(loginEmail, loginPassword));
-
-    // if (error) {
-    //   alert.error(error);
-    //   dispatch(clearErrors());
-    // }
   };
 
   const registerSubmit = (e) => {
@@ -68,16 +60,16 @@ function LoginRegister() {
   };
 
   useEffect(() => {
-    // if (error) {
-    //   alert.error(error);
-    //   dispatch(clearErrors);
-    // }
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors);
+    }
     if (isAuthenticated) {
       navigate("/");
       // navigate("/account");
     }
     // }, [dispatch, error, alert]);
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate, alert, error, dispatch]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {

@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -10,7 +11,6 @@ function PhoneDetails() {
   const { phone, isLoading } = useSelector((state) => state.phoneDetails);
 
   const { id } = useParams();
-  // console.log(id);
 
   useEffect(() => {
     dispatch(getSinglePhone(id));
@@ -29,7 +29,6 @@ function PhoneDetails() {
           <h2 className="text-center name">{phone.name}</h2>
           <div className="col-lg-8" style={{ textAlign: "center" }}>
             <img
-              // src={phone.pic}
               src={phone.image.map((img) => img.url)}
               alt=""
               srcSet=""
@@ -45,145 +44,176 @@ function PhoneDetails() {
                 <tr>
                   <th>Storage & RAM</th>
                   <td>
-                    {phone.storage}+{phone.RAM}
+                    <b>
+                      {phone.storage}+{phone.RAM}
+                    </b>
+                    <Typography>
+                      External Memory: {phone.externalMemory}
+                    </Typography>
                   </td>
                 </tr>
-                {/* <tr>
-                  <th>Dimensions</th>
-                  <td>
-                    Height: 152.7mm <br />
-                    Width: 69.9mm <br />
-                    Thickness: 8.16mm
-                    <br />
-                    Weight: 180g
-                  </td>
-                </tr> */}
+
                 <tr>
                   <th>Display</th>
                   <td>
-                    {/* FHD+ 6.28" AMOLED DotDisplay
-                    <br />
-                    20:9, 2400 x 1080
-                    <br />
-                    419 ppi
-                    <br />
-                    Refresh rate: 120Hz
-                    <br />
-                    Touch sampling rate: up to 480Hz
-                    <br />
-                    Over 68 billion colors */}
-                    {phone.display}
+                    <b>{phone.display}</b>
+
+                    {phone.displayExtraOne !== undefined && (
+                      <Typography>{phone.displayExtraOne}</Typography>
+                    )}
+                    {phone.displayExtraTwo !== undefined && (
+                      <Typography>{phone.displayExtraTwo}</Typography>
+                    )}
+                    {phone.displayExtraThree !== "" && (
+                      <Typography>{phone.displayExtraThree}</Typography>
+                    )}
+                    {phone.displayExtraFour !== "" && (
+                      <Typography>{phone.displayExtraFour}</Typography>
+                    )}
+                    {phone.displayExtraFive !== "" && (
+                      <Typography>{phone.displayExtraFive}</Typography>
+                    )}
                   </td>
                 </tr>
                 <tr>
                   <th>Processor</th>
                   <td>
-                    {/* Snapdragon® 8 Gen 1 <br />
-                    4nm power-efficient manufacturing process <br />
-                    CPU: <br />
-                    1x Prime core (X2-based), 3.0GHz
-                    <br />
-                    3x Gold cores (A710-based), 2.5GHz
-                    <br />
-                    4x Silver cores (A510-based), 1.8GHz
-                    <br />
-                    GPU: Qualcomm® Adreno™ GPU
-                    <br />
-                    7th Gen Qualcomm® AI Engine */}
-                    {phone.processor}
+                    <b>{phone.processor}</b>
+                    {phone.processorExtraOne !== "" && (
+                      <Typography>{phone.processorExtraOne}</Typography>
+                    )}
+                    {phone.processorExtraTwo !== "" && (
+                      <Typography>{phone.processorExtraTwo}</Typography>
+                    )}
+                    {phone.processorExtraThree !== "" && (
+                      <Typography>{phone.processorExtraThree}</Typography>
+                    )}
                   </td>
                 </tr>
                 <tr>
                   <th>Camera</th>
                   <td>
-                    {/* Height: 152.7mm <br />
-                    Width: 69.9mm <br />
-                    Thickness: 8.16mm
-                    <br />
-                    Weight: 180g */}
-                    {phone.camera}
+                    <b>{phone.camera}</b>
+                    {phone.cameraExtraOne !== "" && (
+                      <Typography>Front: {phone.cameraExtraOne}</Typography>
+                    )}
+                    {phone.cameraExtraTwo !== "" && (
+                      <Typography>Front: {phone.cameraExtraTwo}</Typography>
+                    )}
+                    {phone.cameraExtraThree !== "" && (
+                      <Typography>{phone.cameraExtraThree}</Typography>
+                    )}
                   </td>
                 </tr>
 
                 <tr>
                   <th>Battery</th>
-                  <td>{phone.battery}</td>
-                </tr>
-                {/* <tr>
-                  <th>Cooling System</th>
                   <td>
-                    LiquidCool Technology (Super big VC + Multilayer graphite
-                    sheets+BN film)
+                    <b>{phone.battery}</b>
+                    {phone.batteryExtraOne !== "" && (
+                      <Typography>{phone.batteryExtraOne}</Typography>
+                    )}
+                    {phone.batteryExtraTwo !== "" && (
+                      <Typography>{phone.batteryExtraTwo}</Typography>
+                    )}
+                    {phone.batteryExtraThree !== "" && (
+                      <Typography>{phone.batteryExtraThree}</Typography>
+                    )}
                   </td>
-                </tr> */}
+                </tr>
+
                 <tr>
                   <th>Security & Authentication</th>
-                  <td>{phone.security}</td>
+                  <td>
+                    <b>{phone.security}</b>
+                    {phone.securityExtraOne !== "" && (
+                      <Typography>{phone.securityExtraOne}</Typography>
+                    )}
+                    {phone.securityExtraTwo !== "" && (
+                      <Typography>{phone.securityExtraTwo}</Typography>
+                    )}
+                  </td>
                 </tr>
                 <tr>
                   <th>NFC</th>
                   <td>
-                    {phone.nfc}
-                    {/* Supports Google Pay
-                    <br />
-                    may vary between markets */}
+                    <b>{phone.nfc}</b>
+                    {phone.nfcExtraOne !== "" && (
+                      <Typography>{phone.nfcExtraOne}</Typography>
+                    )}
+                    {phone.nfcExtraTwo !== "" && (
+                      <Typography>{phone.nfcExtraTwo}</Typography>
+                    )}
+                    {phone.nfcExtraThree !== "" && (
+                      <Typography>{phone.nfcExtraThree}</Typography>
+                    )}
                   </td>
                 </tr>
-                {/* <tr>
-                  <th>Network & Connectivity</th>
-                  <td>
-                  </td>
-                </tr> */}
-                <tr>
-                  <th>Wireless Networks</th>
-                  <td>
-                    {phone.network}
 
-                    {/* Bluetooth 5.2
-                    <br />
-                    Wi-Fi 6 / Wi-Fi 6E */}
-                  </td>
-                </tr>
-                {/* <tr>
-                  <th>Navigation & Positioning</th>
-                  <td>
-                    GPS: L1+L5
-                    <br />
-                    Galileo: E1+E5a | GLONASS: G1 | Beidou| NavIC: L5
-                    <br />
-                    A-GPS supplementary positioning | Electronic compass |
-                    Wireless network | Data network| SAP
-                  </td>
-                </tr> */}
-                {/* <tr>
-                  <th>Vibration motor</th>
-                  <td>X-axis linear vibration motor</td>
-                </tr>
                 <tr>
-                  <th>Audio</th>
+                  <th>Networks</th>
                   <td>
-                    Dual speakers
-                    <br />
-                    Dolby Atmos®
-                    <br />
-                    SOUND BY Harman Kardon
+                    <b>{phone.network}</b>
+
+                    {phone.networkExtraOne && (
+                      <Typography>{phone.networkExtraOne}</Typography>
+                    )}
+                    {phone.networkExtraTwo && (
+                      <Typography>{phone.networkExtraTwo}</Typography>
+                    )}
+                    {phone.networkExtraThree && (
+                      <Typography>{phone.networkExtraThree}</Typography>
+                    )}
                   </td>
-                </tr> */}
+                </tr>
+
                 <tr>
                   <th>Sensors</th>
-                  <td>{phone.sensors}</td>
+                  <td>
+                    <b>{phone.sensors}</b>
+                    {phone.sensorsExtraOne !== "" && (
+                      <Typography>{phone.sensorsExtraOne}</Typography>
+                    )}
+                    {phone.sensorsExtraTwo !== "" && (
+                      <Typography>{phone.sensorsExtraTwo}</Typography>
+                    )}
+                    {phone.sensorsExtraThree !== "" && (
+                      <Typography>{phone.sensorsExtraThree}</Typography>
+                    )}
+                  </td>
                 </tr>
                 <tr>
                   <th>Operating System</th>
-                  <td>{phone.os}</td>
+                  <td>
+                    <b>{phone.os}</b>
+                    {phone.osExtraOne !== "" && (
+                      <Typography>{phone.osExtraOne}</Typography>
+                    )}
+                    {phone.osExtraTwo !== "" && (
+                      <Typography>{phone.osExtraTwo}</Typography>
+                    )}
+                    {phone.osExtraThree !== "" && (
+                      <Typography>{phone.osExtraThree}</Typography>
+                    )}
+                  </td>
                 </tr>
                 <tr>
                   <th>Package Contains</th>
-                  <td>{phone.packagecontains}</td>
+                  <td>
+                    <b>{phone.packagecontains}</b>
+                    {phone.packagecontainsExtraOne !== "" && (
+                      <Typography>{phone.packagecontainsExtraOne}</Typography>
+                    )}
+                    {phone.packagecontainsExtraTwo !== "" && (
+                      <Typography>{phone.packagecontainsExtraTwo}</Typography>
+                    )}
+                  </td>
                 </tr>
                 <tr>
                   <th>Price</th>
-                  <td>{phone.price}</td>
+                  <td>
+                    <b>&#x20b9; {phone.price}</b>
+                  </td>
                 </tr>
               </table>
             </div>

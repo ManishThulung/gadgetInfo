@@ -24,10 +24,6 @@ const CreatorPhoneList = () => {
 
   const { user } = useSelector((state) => state.user);
 
-  // console.log(user._id);
-  // console.log(phones[1].creator);
-  // console.log(phones);
-
   const { error: deleteError, isDeleted } = useSelector(
     (state) => state.deleteUpdate
   );
@@ -68,13 +64,13 @@ const CreatorPhoneList = () => {
       headerName: "Name",
       headerClassName: "columnHeaders",
       minWidth: 100,
-      flex: 0.5,
+      flex: 0.45,
     },
     {
       field: "company",
       headerName: "Company",
       minWidth: 80,
-      flex: 0.4,
+      flex: 0.35,
     },
 
     {

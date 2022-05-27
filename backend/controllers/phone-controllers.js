@@ -50,8 +50,8 @@ const getPhoneById = catchAsyncError(async (req, res, next) => {
 const createPhone = catchAsyncError(async (req, res, next) => {
   const myCloud = await cloudinary.v2.uploader.upload(req.body.image, {
     folder: "phones",
-    // width: 150,
-    // crop: "scale",
+    width: 150,
+    crop: "scale",
   });
   req.body.creator = req.user.id;
   const creator = req.body.creator;
@@ -72,6 +72,37 @@ const createPhone = catchAsyncError(async (req, res, next) => {
     nfc,
     packagecontains,
     price,
+    externalMemory,
+    processorExtraOne,
+    processorExtraTwo,
+    processorExtraThree,
+    displayExtraOne,
+    displayExtraTwo,
+    displayExtraThree,
+    displayExtraFour,
+    displayExtraFive,
+    cameraExtraOne,
+    cameraExtraTwo,
+    cameraExtraThree,
+    batteryExtraOne,
+    batteryExtraTwo,
+    batteryExtraThree,
+    osExtraOne,
+    osExtraTwo,
+    osExtraThree,
+    sensorsExtraOne,
+    sensorsExtraTwo,
+    sensorsExtraThree,
+    networkExtraOne,
+    networkExtraTwo,
+    networkExtraThree,
+    nfcExtraOne,
+    nfcExtraTwo,
+    nfcExtraThree,
+    securityExtraOne,
+    securityExtraTwo,
+    packagecontainsExtraOne,
+    packagecontainsExtraTwo,
   } = req.body;
 
   const phone = await Phone.create({
@@ -92,6 +123,37 @@ const createPhone = catchAsyncError(async (req, res, next) => {
     packagecontains,
     price,
     creator,
+    externalMemory,
+    processorExtraOne,
+    processorExtraTwo,
+    processorExtraThree,
+    displayExtraOne,
+    displayExtraTwo,
+    displayExtraThree,
+    displayExtraFour,
+    displayExtraFive,
+    cameraExtraOne,
+    cameraExtraTwo,
+    cameraExtraThree,
+    batteryExtraOne,
+    batteryExtraTwo,
+    batteryExtraThree,
+    osExtraOne,
+    osExtraTwo,
+    osExtraThree,
+    sensorsExtraOne,
+    sensorsExtraTwo,
+    sensorsExtraThree,
+    networkExtraOne,
+    networkExtraTwo,
+    networkExtraThree,
+    nfcExtraOne,
+    nfcExtraTwo,
+    nfcExtraThree,
+    securityExtraOne,
+    securityExtraTwo,
+    packagecontainsExtraOne,
+    packagecontainsExtraTwo,
     image: {
       public_id: myCloud.public_id,
       url: myCloud.secure_url,
@@ -108,7 +170,6 @@ const updatePhone = catchAsyncError(async (req, res, next) => {
   if (!phone) {
     return next(new ErrorHandler("Product not found", 404));
   }
-  // let newPhoneData;
   const newPhoneData = ({
     company: req.body.company,
     name: req.body.name,
@@ -126,61 +187,62 @@ const updatePhone = catchAsyncError(async (req, res, next) => {
     nfc: req.body.nfc,
     packagecontains: req.body.packagecontains,
     price: req.body.price,
+    externalMemory: req.body.externalMemory,
+    processorExtraOne: req.body.processorExtraOne,
+    processorExtraTwo: req.body.processorExtraTwo,
+    processorExtraThree: req.body.processorExtraThree,
+    displayExtraOne: req.body.displayExtraOne,
+    displayExtraTwo: req.body.displayExtraTwo,
+    displayExtraThree: req.body.displayExtraThree,
+    displayExtraFour: req.body.displayExtraFour,
+    displayExtraFive: req.body.displayExtraFive,
+    cameraExtraOne: req.body.cameraExtraOne,
+    cameraExtraTwo: req.body.cameraExtraTwo,
+    cameraExtraThree: req.body.cameraExtraThree,
+    batteryExtraOne: req.body.batteryExtraOne,
+    batteryExtraTwo: req.body.batteryExtraTwo,
+    batteryExtraThree: req.body.batteryExtraThree,
+    osExtraOne: req.body.osExtraOne,
+    osExtraTwo: req.body.osExtraTwo,
+    osExtraThree: req.body.osExtraThree,
+    sensorsExtraOne: req.body.sensorsExtraOne,
+    sensorsExtraTwo: req.body.sensorsExtraTwo,
+    sensorsExtraThree: req.body.sensorsExtraThree,
+    networkExtraOne: req.body.networkExtraOne,
+    networkExtraTwo: req.body.networkExtraTwo,
+    networkExtraThree: req.body.networkExtraThree,
+    nfcExtraOne: req.body.nfcExtraOne,
+    nfcExtraTwo: req.body.nfcExtraTwo,
+    nfcExtraThree: req.body.nfcExtraThree,
+    securityExtraOne: req.body.securityExtraOne,
+    securityExtraTwo: req.body.securityExtraTwo,
+    packagecontainsExtraOne: req.body.packagecontainsExtraOne,
+    packagecontainsExtraTwo: req.body.packagecontainsExtraTwo,
   } = req.body);
-  // console.log("hi");
-  if (req.body.image !== null) {
+
+  if (req.body.image !== "") {
     const phone = await Phone.findById(req.params.pid);
     const imgId = phone.image.map((img) => img.public_id);
+    // const imgId = phone.image.public_id;
     await cloudinary.v2.uploader.destroy(imgId);
 
     const myCloud = await cloudinary.v2.uploader.upload(req.body.image, {
       folder: "phones",
+      width: 150,
+      crop: "scale",
     });
 
     newPhoneData.image = {
       public_id: myCloud.public_id,
       url: myCloud.secure_url,
     };
-    // console.log(newPhoneData.image.url);
-    // console.log(myCloud.public_id);
   }
-  // console.log(newPhoneData);
 
-  phone = await Phone.findByIdAndUpdate(
-    req.params.pid,
-    // newPhoneDataa,
-    newPhoneData,
-    {
-      new: true,
-      runValidators: true,
-      useFindAndModify: false,
-    }
-  );
-  // phone = await Phone.findByIdAndUpdate(
-  //   req.params.pid,
-  //   company,
-  //   name,
-  //   RAM,
-  //   processor,
-  //   display,
-  //   storage,
-  //   camera,
-  //   os,
-  //   category,
-  //   battery,
-  //   network,
-  //   security,
-  //   sensors,
-  //   nfc,
-  //   packagecontains,
-  //   price,
-  //   image,
-  //   {
-  //     new: true,
-  //     runValidators: true,
-  //     useFindAndModify: false,
-  //   }
-  // );
+  phone = await Phone.findByIdAndUpdate(req.params.pid, newPhoneData, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
 
   res.status(200).json({ success: true });
 });

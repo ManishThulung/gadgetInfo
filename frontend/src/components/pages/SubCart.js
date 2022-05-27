@@ -1,16 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function SubHome({ phone }) {
-  // const num = 4;
-  // let page = [];
-  // page.push(phone);
-  // page.length <= num &&
-  // console.log(page.length);
-  // if (page.length >= num) {
-  //   return;
-  // }
+function SubCart({ phone }) {
   return (
+    // page.map((phone) => (
     <>
       <Link to={`/phone/${phone._id}`}>
         <img
@@ -28,4 +21,4 @@ function SubHome({ phone }) {
   );
 }
 
-export default SubHome;
+export default SubCart;

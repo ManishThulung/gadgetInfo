@@ -4,10 +4,9 @@ import Backdrop from "@material-ui/core/Backdrop";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import PersonIcon from "@material-ui/icons/Person";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-// import ListAltIcon from "@material-ui/icons/ListAlt";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../redux/actions/userAction";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./Profile.css";
 import { useAlert } from "react-alert";
 
@@ -18,17 +17,8 @@ function Profile({ user }) {
   const [open, setOpen] = useState(false);
 
   const options = [
-    // { icon: <ListAltIcon />, name: "Orders", func: orders },
     { icon: <PersonIcon />, name: "Profile", func: account },
-    // {
-    //   icon: (
-    //     <ShoppingCartIcon
-    //       style={{ color: cartItems.length > 0 ? "tomato" : "unset" }}
-    //     />
-    //   ),
-    //   name: `Cart(${cartItems.length})`,
-    //   func: cart,
-    // },
+
     { icon: <ExitToAppIcon />, name: "Logout", func: logoutUser },
   ];
 
@@ -42,9 +32,6 @@ function Profile({ user }) {
   function account() {
     navigate("/account");
   }
-  // function cart() {
-  //   navigate("/cart");
-  // }
   function logoutUser() {
     dispatch(logout());
     alert.success("Logout Successfully");

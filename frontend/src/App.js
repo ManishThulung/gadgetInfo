@@ -20,7 +20,6 @@ import store from "./store.js";
 import { loadUser } from "./redux/actions/userAction";
 import NewPhone from "./components/admin/NewPhone";
 import UpdatePhone from "./components/admin/UpdatePhone";
-import MobileForm from "./components/Form/MobileForm";
 import UserList from "./components/admin/UserList";
 import CreatorDashbord from "./components/creator/CreatorDashbord";
 import CreatorPhoneList from "./components/creator/CreatorPhoneList";
@@ -28,6 +27,15 @@ import CreatorNewPhone from "./components/creator/CreatorNewPhone";
 import CreatorUpdatePhone from "./components/creator/CreatorUpdatePhone";
 import UpdateUser from "./components/admin/UpdateUser";
 import NotFound from "./components/layout/NotFound";
+import TrendingPhonesAll from "./components/pages/TrendingPhonesAll";
+import UpcommingPhonesAll from "./components/pages/UpcommingPhonesAll";
+import GamingPhonesAll from "./components/pages/GamingPhonesAll";
+import AllApplePhones from "./components/phones/AllApplePhones";
+import AllXiaomiPhones from "./components/phones/AllXiaomiPhones";
+import AllVivoPhones from "./components/phones/AllVivoPhones";
+import AllSamsungPhones from "./components/phones/AllSamsungPhones";
+import AllOppoPhones from "./components/phones/AllOppoPhones";
+import SearchedPhones from "./components/phones/SearchedPhones";
 
 function App() {
   const { isAuthenticated, user, loading } = useSelector((state) => state.user);
@@ -47,19 +55,20 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/phones/:keyword" element={<SearchedPhones />} />
             <Route path="/phones" element={<AllPhones />} />
-            <Route path="/phones/:keyword" element={<AllPhones />} />
             <Route path="/login" element={<LoginRegister />} />
 
             <Route path="/phone/:id" element={<PhoneDetails />} />
             <Route path="/search" element={<Search />} />
-
-            {isAuthenticated &&
-              (user.role === "content_creator" ? (
-                <Route path="/addphone" element={<MobileForm />} />
-              ) : (
-                <Route path="/addphone" element={<Navigate to="/" />} />
-              ))}
+            <Route path="/phones/trending" element={<TrendingPhonesAll />} />
+            <Route path="/phones/upcoming" element={<UpcommingPhonesAll />} />
+            <Route path="/phones/gaming" element={<GamingPhonesAll />} />
+            <Route path="/phones/apple" element={<AllApplePhones />} />
+            <Route path="/phones/xiaomi" element={<AllXiaomiPhones />} />
+            <Route path="/phones/vivo" element={<AllVivoPhones />} />
+            <Route path="/phones/samsung" element={<AllSamsungPhones />} />
+            <Route path="/phones/oppo" element={<AllOppoPhones />} />
 
             {isAuthenticated &&
               (!user.role === "admin" ? (

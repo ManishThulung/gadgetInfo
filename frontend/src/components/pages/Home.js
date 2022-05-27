@@ -2,9 +2,7 @@ import React, { useEffect } from "react";
 import pic1 from "../logo/pic1.jpg";
 import pic2 from "../logo/pic2.jpg";
 import pic3 from "../logo/pic3.jpg";
-
 import { useSelector, useDispatch } from "react-redux";
-
 import "./Contact.css";
 import { getPhones } from "../../redux/actions/phoneAction";
 import TrendingPhones from "./TrendingPhones";
@@ -21,7 +19,7 @@ function Home() {
   }, [dispatch]);
   return (
     <>
-      <MetaData title="gadgetInfo - phones" />
+      <MetaData title="GadgetInfo - phones" />
 
       <div style={{ height: "90vh" }}>
         <div
@@ -55,22 +53,28 @@ function Home() {
             <div className="carousel-item active" data-bs-interval="10000">
               <img src={pic1} className="d-block w-100" alt="..." />
               <div className="carousel-caption d-none d-md-block">
+                {/* <Link to="/phones/trending"> */}
                 <h5>Trending Phones</h5>
-                <p>See the top Smartphones of this year</p>
+                <p>See the top Smartphones of this year below.</p>
+                {/* </Link> */}
               </div>
             </div>
             <div className="carousel-item" data-bs-interval="2000">
               <img src={pic2} className="d-block w-100" alt="..." />
               <div className="carousel-caption d-none d-md-block">
+                {/* <Link to="/phones/upcoming"> */}
                 <h5>Upcoming Phones</h5>
-                <p>See the top featured Upcoming Smartphones </p>
+                <p>See the top featured Upcoming Smartphones below.</p>
+                {/* </Link> */}
               </div>
             </div>
             <div className="carousel-item">
               <img src={pic3} className="d-block w-100" alt="..." />
               <div className="carousel-caption d-none d-md-block">
+                {/* <Link to="/phones/gaming"> */}
                 <h5>Gaming Phones</h5>
-                <p>See the top Gaming Smartphones</p>
+                <p>See the top Gaming Smartphones below.</p>
+                {/* </Link> */}
               </div>
             </div>
           </div>

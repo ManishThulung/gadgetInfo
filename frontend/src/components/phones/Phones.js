@@ -8,7 +8,8 @@ import xiaomi from "../logo/xiaomi12ic-01.png";
 function Phones() {
   return (
     <div
-      className="accordion container my-5"
+      style={{ width: "100vh", margin: "auto" }}
+      className="accordion my-5"
       id="accordionPanelsStayOpenExample"
     >
       <div className="accordion-item">

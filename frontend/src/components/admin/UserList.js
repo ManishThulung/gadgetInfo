@@ -57,7 +57,7 @@ const UserList = () => {
   }, [dispatch, alert, error, deleteError, navigate, isDeleted, message]);
 
   const columns = [
-    { field: "id", headerName: "USER ID", minWidth: 200, flex: 0.6 },
+    { field: "id", headerName: "USER ID", minWidth: 200, flex: 0.5 },
 
     {
       field: "email",

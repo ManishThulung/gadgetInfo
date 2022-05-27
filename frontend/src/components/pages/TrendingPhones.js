@@ -1,32 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import SubHome from "./SubHome";
 import "./Home.css";
+import SeeMore from "./SeeMore";
 
 function TrendingPhones({ topic, phones }) {
-  // const [num, setNum] = useState(1);
+  // console.log([phones]);
+  let page = [];
+
+  phones &&
+    phones.map((phone) => phone.category === "trending" && page.push(phone));
   return (
     <div className="container category">
       <h3 className="badge rounded-pill bg-danger topic">{topic}</h3>
 
       <div className="row d-flex justify-content-center my-4">
-        {phones &&
-          phones.map((phone) =>
-            phone.category === "trending" ? (
+        {page.map(
+          (ph, index) =>
+            index <= 3 && (
               <div
-                key={phone._id}
+                key={ph._id}
                 className="card col-md-4 col-lg-4 col-sm-2"
                 style={{ width: "13rem", height: "fit-content" }}
               >
-                {/* {num <= 3 && <SubHome phone={phone} />} */}
-                <SubHome phone={phone} />
-
-                {/* {setNum(num + 1)}
-                {console.log(`${num}`)} */}
+                <SubHome phone={ph} />
               </div>
-            ) : (
-              ""
             )
-          )}
+        )}
+        {page.length > 4 && (
+          <div className="seeMore">
+            <SeeMore category="trending" />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -58,14 +58,13 @@ const ProductList = () => {
       headerName: "Name",
       headerClassName: "columnHeaders",
       minWidth: 100,
-      flex: 0.5,
+      flex: 0.45,
     },
     {
       field: "company",
       headerName: "Company",
-      // type: "number",
       minWidth: 80,
-      flex: 0.4,
+      flex: 0.35,
     },
 
     {

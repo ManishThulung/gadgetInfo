@@ -1,4 +1,5 @@
 const express = require("express");
+const { check } = require("express-validator");
 
 const phoneControllers = require("../controllers/phone-controllers");
 const { auth, authorizeRoles, combineRoles } = require("../middleware/auth");
@@ -8,6 +9,20 @@ const router = express.Router();
 router.get("/", phoneControllers.getAllPhone);
 
 router.get("/:pid", phoneControllers.getPhoneById);
+
+// router.post(
+//   '/',
+//   [
+//     check('title')
+//       .not()
+//       .isEmpty(),
+//     check('description').isLength({ min: 5 }),
+//     check('address')
+//       .not()
+//       .isEmpty()
+//   ],
+//   placesControllers.createPlace
+// );
 
 router.get(
   "/admin/phones/",

@@ -8,7 +8,7 @@ exports.auth = catchAsyncError(async (req, res, next) => {
   try {
     // const { token } = req.cookies;
     const token = req.headers.authorization.split(" ")[1];
-    console.log(token);
+    // console.log(token);
 
     if (!token) {
       return next(
@@ -45,22 +45,6 @@ exports.authorizeRoles = (roles) => {
   return (req, res, next) => {
     // req.user.role -> role we assigned in db req.user ->   req.user = await User.findById(decodeData.id);
     if (!roles.includes(req.user.role)) {
-      return next(
-        new ErrorHandler(
-          `Role: ${req.user.role} is not allowed to access this resource`,
-          403 // refused by server
-        )
-      );
-    }
-    next();
-  };
-};
-
-// exports.combineRoles = ([...role1], [...role2]) => {
-exports.combineRoles = (...role1) => {
-  return (req, res, next) => {
-    // req.user.role -> role we assigned in db req.user ->   req.user = await User.findById(decodeData.id);
-    if (!role1.includes(req.user.role)) {
       return next(
         new ErrorHandler(
           `Role: ${req.user.role} is not allowed to access this resource`,

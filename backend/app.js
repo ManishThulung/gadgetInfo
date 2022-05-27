@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
@@ -8,6 +8,12 @@ const cors = require("cors");
 const cloudinary = require("cloudinary");
 const fileUpload = require("express-fileupload");
 const helmet = require("helmet");
+const path = require("path");
+
+// config path
+if (process.env.NODE_ENV !== "PRODUCTION") {
+  require("dotenv").config({ path: "backend/config/config.env" });
+}
 
 const phoneRoutes = require("./routes/phone-routes");
 const userRoutes = require("./routes/user-routes");
@@ -46,6 +52,12 @@ cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
 });
 
 app.use(errorMiddleware);
