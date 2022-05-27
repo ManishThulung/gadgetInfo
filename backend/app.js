@@ -62,13 +62,15 @@ app.get("*", (req, res) => {
 
 app.use(errorMiddleware);
 
+var port = process.env.PORT || 8000;
+
 mongoose
   .connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
-    app.listen(8000, () => {
+    app.listen(port, () => {
       console.log("connected to database");
     });
   })
