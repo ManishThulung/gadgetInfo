@@ -8,6 +8,7 @@ const cors = require("cors");
 const cloudinary = require("cloudinary");
 const fileUpload = require("express-fileupload");
 const helmet = require("helmet");
+// const csp = require("helmet-csp");
 const path = require("path");
 
 // config path
@@ -34,19 +35,21 @@ app.use(fileUpload());
 // );
 
 // app.use(
-//   // [
 //   helmet.contentSecurityPolicy({
 //     directives: {
-//       defaultSrc: ["'self'"],
+//       defaultSrc: ["'self'", "https://*.herokuapp.com"],
 //       connectSrc: ["'self'", "https://*.herokuapp.com"],
 //       scriptSrc: ["'self'"],
 //       styleSrc: ["'self'", "https://fonts.googleapis.com"],
-//       fontSrc: ["'self'", "https://fonts.google.com/"],
+//       fontSrc: [
+//         "'self'",
+//         "https://fonts.google.com/",
+//         "https://fonts.googleapis.com",
+//       ],
 //       imgSrc: ["'self'", "https://res.cloudinary.com"],
-//       baseUri: ["'self'"],
+//       // baseUri: ["'self'"],
 //     },
 //   })
-//   // ]
 // );
 
 app.use((req, res, next) => {
@@ -62,6 +65,10 @@ app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Methods",
     "GET, POST, PATCH, PUT, DELETE"
+  );
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; scripr-src 'unsafe-inline'; connect-src 'self' https://gadgetinfo-mern-stack.herokuapp.com; style-src 'self' https://fonts.googleapis.com; img-src 'self' https://res.cloudinary.com; font-src 'self' https://fonts.google.com; "
   );
   next();
 });
