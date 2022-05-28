@@ -50,12 +50,9 @@ app.use((req, res, next) => {
     "GET, POST, PATCH, PUT, DELETE"
   );
   res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
-  // res.setHeader(
-  //   "Content-Security-Policy",
-  //   "default-src 'self'; scripr-src 'unsafe-inline'; connect-src 'self' https://gadgetinfo-mern-stack.herokuapp.com; style-src 'self' https://fonts.googleapis.com; img-src 'self' https://res.cloudinary.com; font-src 'self' https://fonts.google.com; "
-  // );
   next();
 });
+
 app.use("/api/phones", phoneRoutes);
 app.use("/api/user", userRoutes);
 
