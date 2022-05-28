@@ -34,41 +34,12 @@ app.use(fileUpload());
 //   })
 // );
 
-app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      defaultSrc: ["*", "gap:"],
-      connectSrc: [
-        "http://127.0.0.1:8000/",
-        "https://gadgetinfo-mern-stack.herokuapp.com",
-      ],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
-      styleSrc: [
-        "'self'",
-        "https://fonts.googleapis.com",
-        "https://use.fontawesome.com",
-        "https://fonts.gstatic.com",
-        "'unsafe-inline'",
-      ],
-      fontSrc: [
-        "'self'",
-        "https://fonts.google.com/",
-        "https://fonts.googleapis.com",
-        "https://fonts.gstatic.com",
-        "https://use.fontawesome.com",
-      ],
-      imgSrc: ["*", "data:", "blob:"],
-      // imgSrc: ["'self'", "data:", "https://res.cloudinary.com", "http://www.w3.org/2000/svg"],
-      // baseUri: ["'self'"],
-    },
-  })
-);
-
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Credentials", " true");
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "gadgetinfo-mern-stack.herokuapp.com/"
+    "https://gadgetinfo-mern-stack.herokuapp.com",
+    "http://127.0.0.1:800"
   );
   res.setHeader(
     "Access-Control-Allow-Headers",
@@ -92,6 +63,36 @@ cloudinary.config({
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["*", "gap:"],
+      connectSrc: [
+        "http://127.0.0.1:8000/",
+        "https://gadgetinfo-mern-stack.herokuapp.com",
+      ],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
+      styleSrc: [
+        "'self'",
+        "https://fonts.googleapis.com",
+        "https://use.fontawesome.com",
+        "https://fonts.gstatic.com",
+        "'unsafe-inline'",
+      ],
+      fontSrc: [
+        "'self'",
+        "https://fonts.google.com/",
+        "https://fonts.googleapis.com",
+        "https://fonts.gstatic.com",
+        "https://use.fontawesome.com",
+      ],
+      imgSrc: ["*", "data:", "blob:", "https://res.cloudinary.com"],
+      // imgSrc: ["'self'", "data:", "https://res.cloudinary.com", "http://www.w3.org/2000/svg"],
+      // baseUri: ["'self'"],
+    },
+  })
+);
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
