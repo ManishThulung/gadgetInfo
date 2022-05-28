@@ -39,18 +39,20 @@ app.use(
     directives: {
       defaultSrc: ["'self'", "https://*.herokuapp.com"],
       connectSrc: ["'self'", "https://*.herokuapp.com"],
-      scriptSrc: ["'self'", "unsafe-inline"],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
       styleSrc: [
         "'self'",
         "https://fonts.googleapis.com",
         "https://use.fontawesome.com",
         "https://fonts.gstatic.com",
-        "unsafe-inline",
+        "'unsafe-inline'",
       ],
       fontSrc: [
         "'self'",
         "https://fonts.google.com/",
         "https://fonts.googleapis.com",
+        "https://fonts.gstatic.com",
+        "https://use.fontawesome.com",
       ],
       imgSrc: ["'self'", "https://res.cloudinary.com"],
       // baseUri: ["'self'"],
