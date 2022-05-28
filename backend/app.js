@@ -37,7 +37,7 @@ app.use(fileUpload());
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self'"],
+      defaultSrc: ["*", "gap:"],
       connectSrc: ["https://gadgetinfo-mern-stack.herokuapp.com"],
       scriptSrc: ["'self'", "'unsafe-inline'"],
       styleSrc: [
@@ -54,7 +54,8 @@ app.use(
         "https://fonts.gstatic.com",
         "https://use.fontawesome.com",
       ],
-      imgSrc: ["'self'", "https://res.cloudinary.com"],
+      imgSrc: ["*", "data:", "blob:"],
+      // imgSrc: ["'self'", "data:", "https://res.cloudinary.com", "http://www.w3.org/2000/svg"],
       // baseUri: ["'self'"],
     },
   })
