@@ -35,7 +35,8 @@ export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
 
-    const url = "http://127.0.0.1:8000/api/user/login";
+    const url = "https://gadgetinfo-mern-stack.herokuapp.com/api/user/login";
+    // const url = "http://127.0.0.1:8000/api/user/login";
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.post(url, { email, password }, config);
@@ -51,7 +52,8 @@ export const register = (userData) => async (dispatch) => {
   try {
     dispatch({ type: REGISTER_USER_REQUEST });
 
-    const url = "http://127.0.0.1:8000/api/user/register";
+    const url = "https://gadgetinfo-mern-stack.herokuapp.com/api/user/register";
+    // const url = "http://127.0.0.1:8000/api/user/register";
 
     const config = { headers: { "Content-Type": "application/json" } };
 
@@ -88,7 +90,10 @@ export const loadUser = () => async (dispatch) => {
 // logout user
 export const logout = () => async (dispatch) => {
   try {
-    await axios.get("http://127.0.0.1:8000/api/user/logout");
+    await axios.get(
+      "https://gadgetinfo-mern-stack.herokuapp.com/api/user/logout"
+    );
+    // await axios.get("http://127.0.0.1:8000/api/user/logout");
     dispatch({
       type: LOGOUT,
     });

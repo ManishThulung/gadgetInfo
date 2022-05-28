@@ -28,7 +28,8 @@ export const getPhones =
     try {
       // let link = `http://127.0.0.1:8000/api/phones?keyword=${keyword}&price[gte]=${price[0]}&price[lte]=${price[1]}`;
 
-      let link = `http://127.0.0.1:8000/api/phones?keyword=${keyword}`;
+      let link = `https://gadgetinfo-mern-stack.herokuapp.com/api/phones?keyword=${keyword}`;
+      // let link = `http://127.0.0.1:8000/api/phones?keyword=${keyword}`;
 
       const { data } = await axios.get(link);
 
