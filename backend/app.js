@@ -38,7 +38,8 @@ app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
     "https://gadgetinfo-mern-stack.herokuapp.com",
-    "http://127.0.0.1:800"
+    "http://127.0.0.1:800",
+    " https://res.cloudinary.com/"
   );
   res.setHeader(
     "Access-Control-Allow-Headers",
