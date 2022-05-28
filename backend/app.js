@@ -32,6 +32,23 @@ app.use(fileUpload());
 //     credentials: true,
 //   })
 // );
+
+// app.use(
+//   // [
+//   helmet.contentSecurityPolicy({
+//     directives: {
+//       defaultSrc: ["'self'"],
+//       connectSrc: ["'self'", "https://*.herokuapp.com"],
+//       scriptSrc: ["'self'"],
+//       styleSrc: ["'self'", "https://fonts.googleapis.com"],
+//       fontSrc: ["'self'", "https://fonts.google.com/"],
+//       imgSrc: ["'self'", "https://res.cloudinary.com"],
+//       baseUri: ["'self'"],
+//     },
+//   })
+//   // ]
+// );
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Credentials", " true");
   res.setHeader(
