@@ -38,7 +38,10 @@ app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["*", "gap:"],
-      connectSrc: ["https://gadgetinfo-mern-stack.herokuapp.com"],
+      connectSrc: [
+        "http://127.0.0.1:8000/",
+        "https://gadgetinfo-mern-stack.herokuapp.com",
+      ],
       scriptSrc: ["'self'", "'unsafe-inline'"],
       styleSrc: [
         "'self'",
