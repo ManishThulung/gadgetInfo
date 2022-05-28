@@ -37,8 +37,8 @@ app.use(fileUpload());
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self'", "https://*.herokuapp.com"],
-      connectSrc: ["'self'", "https://*.herokuapp.com"],
+      defaultSrc: ["'self'"],
+      connectSrc: ["'self'", "https://gadgetinfo-mern-stack.herokuapp.com/"],
       scriptSrc: ["'self'", "'unsafe-inline'"],
       styleSrc: [
         "'self'",
