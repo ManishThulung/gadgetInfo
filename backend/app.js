@@ -33,14 +33,18 @@ app.use(fileUpload());
 //   })
 // );
 
+app.use("/api/phones", phoneRoutes);
+app.use("/api/user", userRoutes);
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Credentials", " true");
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://gadgetinfo-mern-stack.herokuapp.com",
-    "http://127.0.0.1:800",
-    " https://res.cloudinary.com/"
-  );
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  // res.setHeader(
+  //   "Access-Control-Allow-Origin",
+  //   "https://gadgetinfo-mern-stack.herokuapp.com",
+  //   "http://127.0.0.1:800",
+  //   " https://res.cloudinary.com/"
+  // );
   res.setHeader(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
@@ -52,9 +56,6 @@ app.use((req, res, next) => {
   res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
   next();
 });
-
-app.use("/api/phones", phoneRoutes);
-app.use("/api/user", userRoutes);
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
