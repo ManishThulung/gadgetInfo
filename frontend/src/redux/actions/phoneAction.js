@@ -41,7 +41,7 @@ export const getPhones =
       console.log(error);
       dispatch({
         type: FETCH_FAIL,
-        payload: error.response,
+        payload: error.response.data.message,
       });
     }
   };
